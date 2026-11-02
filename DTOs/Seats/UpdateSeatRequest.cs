@@ -1,0 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace MovieTicketBooking.DTOs.Seats;
+
+public class UpdateSeatRequest
+{
+    [Required][StringLength(5, MinimumLength = 1)]
+    public string RowName { get; set; } = string.Empty;
+    [Required][Range(1, int.MaxValue)]
+    public int SeatNumber { get; set; }
+    [Required][StringLength(30, MinimumLength = 1)]
+    public string SeatType { get; set; } = "Regular";
+}
