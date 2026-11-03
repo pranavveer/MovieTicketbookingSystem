@@ -1,3 +1,4 @@
+using Scalar.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -8,6 +9,7 @@ using MovieTicketBooking.Repositories;
 using MovieTicketBooking.Repositories.Interfaces;
 using MovieTicketBooking.Services;
 using MovieTicketBooking.Services.Interfaces;
+
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -87,9 +89,10 @@ var app = builder.Build();
 
 app.UseExceptionHandler();
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment()){
     app.MapOpenApi();
-
+    app.MapScalarApiReference();
+}
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
